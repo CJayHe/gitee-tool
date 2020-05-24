@@ -18,7 +18,7 @@
     
 >  全部仓库备份命令 （执行命令用已配置好ssh公钥的用户执行,不要sudo）克隆本账号下全部的仓库的master分支；
     
-   php app/console gitee:project:all:back 
+   '''php app/console gitee:project:all:back'''
    
 ## 执行过程简述
    
