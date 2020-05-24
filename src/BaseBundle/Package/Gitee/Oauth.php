@@ -10,6 +10,9 @@
 
 namespace Gitee;
 
+use BaseBundle\Command\GiteeAllProjectBackCommand;
+use IndexBundle\Controller\IndexController;
+
 class Oauth
 {
     const SESSION_NAME = 'gitee_assess_info';
@@ -25,10 +28,10 @@ class Oauth
         }
 
         $res = json_decode(self::http_post('https://gitee.com/oauth/token', array(
-            'username' => USERNAME,
-            'password' => PASSWORD,
-            'client_id' => CLIENT_ID,
-            'client_secret' => CLIENT_SECRET,
+            'username' => GiteeAllProjectBackCommand::$user_name,
+            'password' => GiteeAllProjectBackCommand::$password,
+            'client_id' => GiteeAllProjectBackCommand::$client_id,
+            'client_secret' => GiteeAllProjectBackCommand::$client_secret,
             'grant_type' => 'password',
             'scope' => ' projects enterprises user_info',
         )), true);
