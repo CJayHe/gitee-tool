@@ -11,19 +11,18 @@
 namespace Gitee;
 
 use BaseBundle\Command\GiteeAllProjectBackCommand;
-use IndexBundle\Controller\IndexController;
 
 class Oauth
 {
-    const SESSION_NAME = 'gitee_assess_info';
+    public static $expired_time;
+
+    public static $assess_token;
 
     public static function getAccessToken()
     {
-        if (!session_id()) session_start();
-
-        if(array_key_exists(self::SESSION_NAME, $_SESSION)){
-            if($_SESSION[self::SESSION_NAME]['expired_time']  > (time() + 10)) {
-                return $_SESSION[self::SESSION_NAME]['assess_token'];
+        if(empty(self::$assess_token)){
+            if(self::$expired_time  > (time() + 10)) {
+                return self::$assess_token;
             }
         }
 
@@ -45,10 +44,8 @@ class Oauth
             die($res['error_description']);
         }
 
-        $_SESSION[self::SESSION_NAME] = array(
-            'assess_token' => $res['access_token'],
-            'expired_time' => time() + $res['expires_in']
-        );
+        self::$assess_token = $res['access_token'];
+        self::$expired_time = time() + $res['expires_in'];
 
         return $res['access_token'];
     }
