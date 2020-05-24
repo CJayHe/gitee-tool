@@ -13,6 +13,11 @@
     全部仓库备份命令
     
     php app/console gitee:project:all:back
+    
+>   技术参照
+
+   [应用创建教程](https://gitee.com/api/v5/oauth_doc#/list-item-3)
+  
 
 
 
