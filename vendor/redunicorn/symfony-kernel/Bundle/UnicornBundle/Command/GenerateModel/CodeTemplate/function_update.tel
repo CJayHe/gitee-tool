@@ -1,0 +1,15 @@
+if(empty($id)){
+    self::$error->setError('param id is not null');
+    return false;
+}
+
+if(!$this->validate($data, $id)){
+    return false;
+}
+
+{{ update_alter_code }}
+
+$this->entityManager->flush();
+$this->entityManager->clear();
+
+return true;

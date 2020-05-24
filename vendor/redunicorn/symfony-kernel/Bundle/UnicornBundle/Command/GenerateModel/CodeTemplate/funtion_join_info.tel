@@ -1,0 +1,1 @@
+$model->sql_array['join'] .= " LEFT JOIN {{ table_name }} {{ table_name_alias }} ON sql_pre.{$joinColumnName} = {{ table_name_alias }}.{$referencedColumnName} ";

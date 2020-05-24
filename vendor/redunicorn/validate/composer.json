@@ -1,0 +1,25 @@
+{
+    "name": "redunicorn/validate",
+    "description": "返回真假的验证组件",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "redunicorn", "validate"
+    ],
+    "homepage": "http://www.redunicorn.org",
+    "authors": [
+        {
+            "name": "jay_he",
+            "email": "hjjhanxing@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "RedUnicorn\\Validate\\": ["", "src"]
+        }
+    },
+    "require": {
+        "php": ">=5.5.0"
+    }
+}

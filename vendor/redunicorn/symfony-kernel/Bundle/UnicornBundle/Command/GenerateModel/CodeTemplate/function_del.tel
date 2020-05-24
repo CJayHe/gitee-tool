@@ -1,0 +1,1 @@
+return self::$conn->executeUpdate('UPDATE ' . $this->table_name . ' set is_del = 1 WHERE ' . $this->tel_sql_array['primary_key'] . ' in (' . $id . ')');

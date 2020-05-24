@@ -1,0 +1,33 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: null
+    database_port: null
+    database_name: null
+    database_user: null
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+
+# 站点标识  [dev - 本地  beta - 测试站 master - 主站]
+    site_mark: dev
+
+
+# session
+    # 设置session的存储模式  不设置则为session
+#    session_type: redis
+
+# 资源
+    # 上传资源是否保存在本地  默认为true
+#    resource_is_save_local: false
+
+    # session_type设置为redis 需要配置
+#snc_redis:
+#    clients:
+#        default:
+#            type: predis
+#            alias: default
+#            dsn: redis://pwd@host
+#            logging: %kernel.debug%

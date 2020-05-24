@@ -1,0 +1,40 @@
+{
+    "name": "redunicorn/symfony-kernel",
+    "description": "基于symfony面向业务的框架内核",
+    "license": "proprietary",
+    "type": "library",
+    "keywords": [
+        "redunicorn", "symfony", "project"
+    ],
+    "homepage": "http://www.redunicorn.org",
+    "authors": [
+        {
+            "name": "jay_he",
+            "email": "hjjhanxing@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "RedUnicorn\\SymfonyKernel\\": [""]
+        }
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "symfony/symfony": "2.8.*",
+        "doctrine/orm": "^2.4.8",
+        "doctrine/doctrine-bundle": "~1.4",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "sensio/distribution-bundle": "~5.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "ramsey/uuid" : "^3.8.0",
+        "tonicospinelli/class-generation": "2.*",
+        "snc/redis-bundle":"2.*",
+        "predis/predis":"^1.0"
+    },
+    "require-dev": {
+        "composer/composer": "1.6.3"
+    }
+}

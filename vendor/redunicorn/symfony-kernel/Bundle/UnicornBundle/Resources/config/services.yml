@@ -1,0 +1,61 @@
+# Learn more about unicorn, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    unicorn.request:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Request\Request
+        arguments: ['@request_stack']
+
+    unicorn.sql:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Sql
+        arguments: ['@service_container']
+
+    unicorn.array:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Arrays
+        arguments: ['@service_container']
+
+    unicorn.date:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Dates
+        arguments: ['@service_container']
+
+    unicorn.cookies:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Cookies
+        arguments: ['@service_container']
+
+    unicorn.sessions:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Sessions
+        arguments: ['@service_container']
+
+    unicorn.filters:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Filters
+
+    unicorn.systems:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Systems
+
+    unicorn.string:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Strings
+
+    unicorn.files:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Files
+        arguments: ['@service_container']
+
+    unicorn.action_load:
+            class: RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Mechanism\ActionLoad
+            arguments: ['@service_container']
+            tags:
+                - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+    unicorn.snapshot:
+        class:  RedUnicorn\SymfonyKernel\Bundle\UnicornBundle\Services\Tools\Snapshot
+        arguments: ['@service_container']
+
+    unicorn.listener.api_exception:
+        class:  RedUnicorn\SymfonyKernel\EventListener\ApiExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }

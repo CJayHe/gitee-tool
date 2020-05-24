@@ -1,0 +1,3 @@
+base:
+    resource: "@BaseBundle/Controller"
+    type:     annotation

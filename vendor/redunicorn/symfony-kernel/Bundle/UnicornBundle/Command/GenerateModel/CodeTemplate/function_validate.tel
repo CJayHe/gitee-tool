@@ -1,0 +1,26 @@
+$this->entityManager = $this->getDoctrine()->getManager();
+
+/**
+ * @var ClassMetadata $metadata
+ */
+$metadata = $this->entityManager->getClassMetadata({{ entity_class_name }}::class);
+$metadata->setTableName($this->getTableName());
+
+if(empty($id)){
+    $this->{{ table_name }}_class = new {{ entity_class_name }}();
+}else{
+    if(!$this->is_exist($id)){
+        self::$error->setError($this->get('translator')->trans('未找到对应信息'));
+        return false;
+    }
+
+    $this->{{ table_name }}_class = $this->entityManager->getRepository({{ entity_class_name }}::class)->find($id);
+}
+
+{{ validate_code }}
+
+if(self::$error->validate($this->{{ table_name }}_class)){
+    return false;
+}
+
+return true;

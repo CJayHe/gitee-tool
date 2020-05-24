@@ -1,0 +1,6 @@
+// {{ annotation }}
+if(array_key_exists('{{ rule_name }}', $rules) {{ rule_where }}){
+    {{ rule_code }}
+}else{
+    {{ else_rule_code }}
+}

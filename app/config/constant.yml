@@ -1,0 +1,27 @@
+parameters:
+
+# 常用选项 #
+
+    genders:
+        1: 男
+        2: 女
+
+    is_disable_arr:
+        0: 启用
+        1: 禁用
+
+# 操作主体 #
+
+    subject_system: 1
+
+    subject_types:
+        1: 系统
+
+# 翻译 #
+
+#  设置需要翻译的二维配置项
+#    trans_parameters:
+#        0: genders
+
+# 登录标志位session名
+    login_tag_session_name: _login_tag

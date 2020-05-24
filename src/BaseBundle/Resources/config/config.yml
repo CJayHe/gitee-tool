@@ -1,0 +1,21 @@
+imports:
+    - { resource: '@UnicornBundle/Resources/config/config.yml' }
+
+parameters:
+
+# 上传资源目录
+    dir_upload: upload
+
+# 行数 默认行数
+    rows: 15
+
+# prefix
+    prefix_session: sf_session_
+    prefix_cookie: sf_cookie_
+
+# 响应码
+    error_code_not_logged: -1
+    error_code_success: 0
+    error_code_failure: 1
+    error_code_error: -5
+    error_code_abnormal: -4

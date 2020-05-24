@@ -1,0 +1,13 @@
+if(!$this->validate($data)){
+    return false;
+}
+
+{{ insert_alter_code }}
+
+$this->entityManager->persist($this->{{ table_name }}_class);
+$this->entityManager->flush();
+$this->entityManager->clear();
+
+$this->lastInsertId = $this->{{ table_name }}_class->get{{ primary_key_funtion_name }}();
+
+return true;

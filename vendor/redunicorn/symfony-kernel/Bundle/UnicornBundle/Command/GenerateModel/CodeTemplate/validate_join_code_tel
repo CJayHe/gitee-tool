@@ -1,0 +1,11 @@
+if(array_key_exists('{{ column_name }}', $data)){
+    if(!empty($data['{{ column_name }}'])) {
+        $this->{{ table_name }}_class->set{{ funtion_name }}($this->entityManager->getRepository({{ targetEntity }}::class)->find($data['{{ column_name }}']));
+        if(empty($this->{{ table_name }}_class->get{{ funtion_name }}())){
+            self::$error->setError($this->get('translator')->trans('{{ column_name }}:' . $data['{{ column_name }}'] . ' 未找到'));
+            return false;
+        }
+    }else{
+        $this->{{ table_name }}_class->set{{ funtion_name }}(null);
+    }
+}

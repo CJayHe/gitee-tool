@@ -1,0 +1,38 @@
+# Symfony
+/app/phpunit.xml
+
+/app/config/parameters.yml
+/app/logs/*
+!app/logs/.gitkeep
+/app/cache/*
+!app/cache/.gitkeep
+/web/bundles/
+
+#Composer
+/composer.phar
+/composer.lock
+
+/tests
+
+# Intellij
+.idea
+*.iml
+*.ipr
+*.iws
+
+#upload
+/web/upload/*
+!web/upload/.gitkeep
+
+
+# Mac OS X
+.DS_Store
+
+# Netbeans
+/nbproject/*
+
+.project
+
+#document
+app/config/document_local.config.php
+web/apidoc

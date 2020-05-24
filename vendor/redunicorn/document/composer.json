@@ -1,0 +1,27 @@
+{
+    "name": "redunicorn/document",
+    "description": "文档生成组件",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "redunicorn", "document", "symfony"
+    ],
+    "homepage": "http://www.redunicorn.org",
+    "authors": [
+        {
+            "name": "jay_he",
+            "email": "hjjhanxing@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "RedUnicorn\\Document\\": ["", "src"]
+        }
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "symfony/symfony": "2.8.*"
+    }
+}
+
