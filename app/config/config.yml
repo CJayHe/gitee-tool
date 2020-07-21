@@ -6,6 +6,7 @@ imports:
 
 parameters:
     locale: cn
+    secret: 123456
 
 framework:
     translator:      { fallbacks: ["%locale%"] }
