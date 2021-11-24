@@ -91,13 +91,18 @@ class GiteeAllProjectBackCommand extends Command
 
         $projects = $projectClass->allProject($page, 100);
 
+        $logName = '项目名录' . time() . '. log';
+
         if(empty($projects)){
             return $count;
         }else{
             foreach ($projects as $project){
                 $count ++;
                 $output->writeln('备份项目' . $project['full_name'] . $project['description']);
-                $dirNames = explode('/',$project['full_name']);
+
+                file_put_contents(self::$path . DIRECTORY_SEPARATOR . $logName, $count . '=>' .$project['full_name'] . '=>' .$project['description'] . '\n');
+
+                $dirNames = explode('/', $project['full_name']);
                 $projectPath = self::$path . DIRECTORY_SEPARATOR . $dirNames[0] . DIRECTORY_SEPARATOR . $dirNames[1];
                 $projectRootPath = self::$path . DIRECTORY_SEPARATOR . $dirNames[0];
                 if(is_dir($projectPath)){
