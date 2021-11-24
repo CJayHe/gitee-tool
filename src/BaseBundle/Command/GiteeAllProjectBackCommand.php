@@ -87,7 +87,18 @@ class GiteeAllProjectBackCommand extends Command
             foreach ($projects as $project){
                 $count ++;
                 $output->writeln('备份项目' . $project['full_name'] . $project['description']);
-                exec('cd '. self::$path .'; git clone ' . $project['ssh_url']);
+                $dirNames = explode('/',$project['full_name']);
+                $projectPath = self::$path . DIRECTORY_SEPARATOR . $dirNames[0] . DIRECTORY_SEPARATOR . $dirNames[1];
+                $projectRootPath = self::$path . DIRECTORY_SEPARATOR . $dirNames[0];
+                if(is_dir($projectPath)){
+                    exec('cd '. $projectPath .'; git pull ');
+                }else{
+                    if(!is_dir($projectRootPath)){
+                        exec('mkdir ' . $projectRootPath);
+                        exec('cd '. $projectRootPath .'; git clone ' . $project['ssh_url']);
+                    }
+                    exec('cd '. $projectRootPath .'; git clone ' . $project['ssh_url']);
+                }
             }
 
             return $this->projectsBack($input, $output, $projectClass, $page + 1, $count);
