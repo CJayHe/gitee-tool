@@ -62,6 +62,14 @@ class GiteeAllProjectBackCommand extends Command
             self::$path = $helper->ask($input, $output, $question);
         } while (empty(self::$path));
 
+
+        $question = new Question('起始分页数(不填默认为1):');
+        $page = $helper->ask($input, $output, $question);
+
+        if(empty($page)){
+            $page = 1;
+        }
+
         $return_var = null;
         $output_ex = null;
         exec('cd ' . self::$path , $output_ex, $return_var);
@@ -72,13 +80,15 @@ class GiteeAllProjectBackCommand extends Command
 
         $output->writeln('备份目录' . self::$path);
 
-        $count = $this->projectsBack($input, $output, new Project());
+        $count = $this->projectsBack($input, $output, new Project(), $page);
 
         $output->writeln('共备份' . $count . '个项目');
     }
 
     private function projectsBack(InputInterface $input, OutputInterface $output, Project $projectClass, $page = 1, $count = 0)
     {
+        $output->writeln('执行分页' . $page);
+
         $projects = $projectClass->allProject($page, 100);
 
         if(empty($projects)){
@@ -100,6 +110,8 @@ class GiteeAllProjectBackCommand extends Command
                     exec('cd '. $projectRootPath .'; git clone ' . $project['ssh_url']);
                 }
             }
+
+            $output->writeln('分页' . $page . '执行结束,当前总数' . $count);
 
             return $this->projectsBack($input, $output, $projectClass, $page + 1, $count);
         }
