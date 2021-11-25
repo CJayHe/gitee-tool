@@ -26,6 +26,8 @@ class GiteeAllProjectBackCommand extends Command
 
     public static $path;
 
+    public static $log;
+
     public function configure()
     {
         $this->setName('gitee:project:all:back')
@@ -80,6 +82,8 @@ class GiteeAllProjectBackCommand extends Command
 
         $output->writeln('备份目录' . self::$path);
 
+        self::$log = self::$path . DIRECTORY_SEPARATOR . '项目名录' . time() . '. log';
+
         $count = $this->projectsBack($input, $output, new Project(), $page);
 
         $output->writeln('共备份' . $count . '个项目');
@@ -91,8 +95,6 @@ class GiteeAllProjectBackCommand extends Command
 
         $projects = $projectClass->allProject($page, 100);
 
-        $logName = '项目名录' . time() . '. log';
-
         if(empty($projects)){
             return $count;
         }else{
@@ -100,7 +102,7 @@ class GiteeAllProjectBackCommand extends Command
                 $count ++;
                 $output->writeln('备份项目' . $project['full_name'] . $project['description']);
 
-                file_put_contents(self::$path . DIRECTORY_SEPARATOR . $logName, $count . '=>' .$project['full_name'] . '=>' .$project['description'] . '\n');
+                file_put_contents(self::$log, $count . '=>' .$project['full_name'] . '=>' .$project['description'] . "\n", FILE_APPEND);
 
                 $dirNames = explode('/', $project['full_name']);
                 $projectPath = self::$path . DIRECTORY_SEPARATOR . $dirNames[0] . DIRECTORY_SEPARATOR . $dirNames[1];
