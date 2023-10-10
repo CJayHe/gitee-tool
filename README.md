@@ -1,5 +1,5 @@
 # gitee 工具集
-![](https://beijing-online-seo-1257309290.cos.ap-beijing.myqcloud.com/seo/material/icon.png)
+
 ## 运行环境
 
   php5.6
